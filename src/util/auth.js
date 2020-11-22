@@ -126,7 +126,7 @@ function useProvideAuth() {
   // Update auth user and persist to database (including any custom values in data)
   // Forms can call this function instead of multiple auth/db update functions
   const updateProfile = async (data) => {
-    const { email, name, picture } = data;
+    const { email, name, picture, sheetLink, phoneCol } = data;
 
     // Update auth email
     if (email) {
@@ -138,6 +138,8 @@ function useProvideAuth() {
       let fields = {};
       if (name) fields.displayName = name;
       if (picture) fields.photoURL = picture;
+      if (sheetLink) fields.sheetURL = sheetLink;
+      if (phoneCol) fields.phoneColumn = phoneCol;
       await firebase.auth().currentUser.updateProfile(fields);
     }
 

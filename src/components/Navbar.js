@@ -33,7 +33,7 @@ function Navbar(props) {
                   Account
                 </Link>
                 <div className="navbar-dropdown is-boxed">
-                  <Link className="navbar-item" to="/dashboard">
+                  <Link className="navbar-item" to="/dashboard/:section">
                     Dashboard
                   </Link>
                   <Link className="navbar-item" to="/settings/general">

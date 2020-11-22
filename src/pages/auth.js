@@ -13,7 +13,7 @@ function AuthPage(props) {
       backgroundImageOpacity={1}
       type={router.query.type}
       providers={["google", "facebook", "twitter"]}
-      afterAuthPath={router.query.next || "/dashboard"}
+      afterAuthPath={router.query.next || "/dashboard/:section"}
     />
   );
 }

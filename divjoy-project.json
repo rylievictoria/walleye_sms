@@ -427,7 +427,7 @@
                                     {
                                       "type": "element",
                                       "tagName": "a",
-                                      "attributes": "{\n  href: '/dashboard'\n}",
+                                      "attributes": "{\n  href: '/dashboard/:section'\n}",
                                       "children": [
                                         {
                                           "type": "text",
@@ -449,7 +449,7 @@
                                       "propsArray": [
                                         {
                                           "key": "href",
-                                          "value": "/dashboard",
+                                          "value": "/dashboard/:section",
                                           "isString": true,
                                           "type": "StringLiteral"
                                         }
@@ -4274,7 +4274,7 @@
       "description": "",
       "nameFormatted": "DashboardPage",
       "nameStyleModule": "DashboardPage",
-      "modulePath": "src/pages/dashboard"
+      "modulePath": "src/pages/dashboard/:section"
     },
     {
       "type": "component",
@@ -7156,7 +7156,7 @@
         {
           "type": "instance",
           "componentId": 7423500,
-          "attributes": "{\n  // primary, link, info, success, warning, \n  // danger, white, light, dark, black\n\tcolor: \"white\",\n  // normal, medium, large\n  size: \"large\",\n  // Background image URL\n  backgroundImage: \"\",\n  // Background image opacity (0-1)\n  backgroundImageOpacity: 1,\n  // signin, signup, forgotpass, changepass\n  type: router.query.type,\n  // Enable other auth providers\n  // google, facebook, twitter, github\n  providers: ['google', 'facebook', 'twitter'],\n  // Where to take user after auth\n  afterAuthPath: router.query.next || \"/dashboard\"\n  // Scroll down to \"Code\" section\n  // to customize further.\n}",
+          "attributes": "{\n  // primary, link, info, success, warning, \n  // danger, white, light, dark, black\n\tcolor: \"white\",\n  // normal, medium, large\n  size: \"large\",\n  // Background image URL\n  backgroundImage: \"\",\n  // Background image opacity (0-1)\n  backgroundImageOpacity: 1,\n  // signin, signup, forgotpass, changepass\n  type: router.query.type,\n  // Enable other auth providers\n  // google, facebook, twitter, github\n  providers: ['google', 'facebook', 'twitter'],\n  // Where to take user after auth\n  afterAuthPath: router.query.next || \"/dashboard/:section\"\n  // Scroll down to \"Code\" section\n  // to customize further.\n}",
           "id": 5248392,
           "isVisible": true,
           "children": [],
@@ -7199,7 +7199,7 @@
             },
             {
               "key": "afterAuthPath",
-              "value": "router.query.next || \"/dashboard\"",
+              "value": "router.query.next || \"/dashboard/:section\"",
               "isString": false,
               "type": "LogicalExpression"
             }

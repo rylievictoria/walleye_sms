@@ -39,7 +39,7 @@ function App(props) {
 
             <Route exact path="/contact" component={ContactPage} />
 
-            <Route exact path="/dashboard" component={DashboardPage} />
+            <Route exact path="/dashboard/:section" component={DashboardPage} />
 
             <Route exact path="/settings/:section" component={SettingsPage} />
 
