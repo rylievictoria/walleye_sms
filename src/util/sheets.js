@@ -6,7 +6,6 @@ export function filterNumbers(data, customers, phoneCol) {
     Object.keys(data).forEach((d) => {
         const [q, value] = d.split('|||');
         if (data[d] && d !== "message") {
-            const flag = false;
             for(let i=0; i<customers[q].responses.length; i++) {
                 if (customers[q].responses[i] === value) {
                     numbers.push(customers[phoneCol].options[i]);
