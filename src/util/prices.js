@@ -1,7 +1,8 @@
 // Map our custom plan IDs ("basic", "premium", etc) to Stripe price IDs
 const stripePriceIds = {
   starter: process.env.REACT_APP_STRIPE_PRICE_STARTER,
-  pro: process.env.REACT_APP_STRIPE_PRICE_PRO
+  pro: process.env.REACT_APP_STRIPE_PRICE_PRO,
+  sms: process.env.REACT_APP_STRIPE_PRICE_SMS
 };
 
 // Get Stripe priceId

@@ -3,9 +3,6 @@ const firestore = firebaseAdmin.firestore();
 
 // Update an existing user
 function updateUser(uid, data) {
-  console.log(uid);
-  console.log(data);
-  console.log('updated user');
   return firestore.collection("users").doc(uid).update(data);
 }
 

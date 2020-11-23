@@ -11,10 +11,11 @@ loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY, {
   stripe = stripeInstance;
 });
 
-export async function redirectToCheckout(planId) {
+export async function redirectToCheckout(planId, quantity) {
   // Create a checkout session
   const session = await apiRequest("stripe-create-checkout-session", "POST", {
     priceId: getStripePriceId(planId),
+    quantity: quantity
   });
 
   // Ensure if user clicks browser back button from checkout they go to /pricing

@@ -45,20 +45,6 @@ function PricingSection(props) {
                 "Aenean sit amet erat nunc",
               ],
             },
-            {
-              id: "business",
-              name: "Business",
-              price: "50",
-              perks: [
-                "Lorem ipsum dolor sit amet",
-                "Consectetur adipiscing elit",
-                "Integer molestie lorem at massa",
-                "Faucibus porta lacus fringilla vel",
-                "Aenean sit amet erat nunc",
-                "Lorem ipsum dolor sit amet",
-                "Consectetur adipiscing elit",
-              ],
-            },
           ]}
         />
       </div>

@@ -6,6 +6,7 @@ import DashboardNav from "./DashboardNav";
 import FormAlert from "./FormAlert";
 import DashboardHome from "./DashboardHome";
 import DashboardSms from "./DashboardSms";
+import DashboardDeliveries from "./DashboardDeliveries";
 import { Link, useRouter } from "./../util/router.js";
 import { useAuth } from "./../util/auth.js";
 import "./DashboardSection.scss";
@@ -25,6 +26,7 @@ function DashboardSection(props) {
   const validSections = {
     "home": true,
     "send-a-text": true,
+    "deliveries": true
   };
 
   const section = validSections[props.section] ? props.section : "home";
@@ -107,6 +109,11 @@ function DashboardSection(props) {
         {section === "send-a-text" && (
           <DashboardSms parentColor={props.color} onStatus={handleStatus} />
         )}
+
+        {section === "deliveries" && (
+          <DashboardDeliveries parentColor={props.color} onStatus={handleStatus} />
+        )}
+
       </div>
     </Section>
             </div>

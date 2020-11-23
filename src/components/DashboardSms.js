@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import FormField from "./FormField";
 import SectionButton from "./SectionButton";
 import { useAuth } from "./../util/auth.js";
+import { useRouter } from "./../util/router.js";
 import { useForm, reset } from "react-hook-form";
 import { getResponses, filterNumbers } from "./../util/sheets.js";
-import { redirectToCheckout } from "./../util/stripe.js";
-import { sendSms } from "../util/twilio.js";
+import { sendSms } from "./../util/twilio.js";
 
 function DashboardSms(props) {
   const auth = useAuth();
+  const router = useRouter();
   const [pending, setPending] = useState(false);
   const [phoneCol, setPhoneCol] = useState("Number");
-  const [deliveries, setDeliveries] = useState([]);  // Need to find a good way to display
   const [customers, setCustomers] = useState({
     "Name": {responses: ["Rylie", "Jordan"], options: ["Rylie", "Jordan"]},
     "Number": {responses: ["+12624243872", "+6309010523"], options: ["+2624243872", "+6309010523"]},
@@ -21,6 +21,7 @@ function DashboardSms(props) {
   const [formAlert, setFormAlert] = useState(null);
 
   useEffect(() => {
+      console.log(auth.user);
       if (auth.user.planIsActive && !auth.user.sheetLink) {
         alert("You need to enter a sheet link first to not use default values!");
       } else if (auth.user.planIsActive && !auth.user.phoneCol) {
@@ -50,34 +51,49 @@ function DashboardSms(props) {
 
   const onSubmit = (data) => {
     setPending(true);
-    setDeliveries([]);
 
     const message = data.message;
     const numbers = filterNumbers(data, customers, phoneCol);
+    const cost = numbers.length * 0.10;
+  
+    if (!(auth.user.smsFunds > 0) || cost > auth.user.smsFunds) {
+      if (auth.user.planIsActive) {
+        alert(`You have ${auth.user.smsFunds} and this costs ${cost}! Refill your account.`)
+        router.push(`/purchase/sms?quantity=${numbers.length}`);
+      } else {
+        alert("You have no subscription! Please sign up.")
+        router.push(`/pricing`);
+      }
+    }
 
     console.log('Message: '+message);
     console.log('Numbers: '+numbers);
 
-    // Stripe checkout
-    // Use webhook for some flag to see if was successful
-  
-    // Maybe have pending / loading icon while messages sending?
-
-    // Text request
     numbers.forEach((num) => {
       sendSms(num, message)
       .then((status) => {
-          setDeliveries([{
-              to: status.to,
-              from: status.from,
-              body: status.body,
-              dateSent: status.dateSent,
-              errorMessage: status.errorMessage,
-              price: status.price
-          }, ...deliveries]);
+          let delivery = {
+            to: status.to,
+            from: status.from,
+            body: status.body,
+            dateSent: status.dateSent,
+            errorMessage: status.errorMessage
+          }
+          if (auth.user.deliveries) {
+            delivery = [...auth.user.deliveries, delivery];
+          } else {
+            delivery = [delivery];
+          }
+          auth.updateProfile({
+            smsFunds: auth.user.smsFunds - 0.10,
+            deliveries: delivery
+          });
       })
       .catch((error) => {
           alert(error.message);
+      })
+      .finally(() => {
+        console.log('SMS Funds left: '+auth.user.smsFunds);
       });
     });
 

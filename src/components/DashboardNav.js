@@ -12,14 +12,19 @@ function DashboardNav(props) {
     >
       <ul>
         <li
-          className={"" + (props.activeKey === "general" ? " is-active" : "")}
+          className={"" + (props.activeKey === "home" ? " is-active" : "")}
         >
           <Link to="/dashboard/home">Home</Link>
         </li>
         <li
-          className={"" + (props.activeKey === "password" ? " is-active" : "")}
+          className={"" + (props.activeKey === "send-a-text" ? " is-active" : "")}
         >
           <Link to="/dashboard/send-a-text">Send a Text</Link>
+        </li>
+        <li
+          className={"" + (props.activeKey === "Deliveries" ? " is-active" : "")}
+        >
+          <Link to="/dashboard/deliveries">Deliveries</Link>
         </li>
       </ul>
     </div>
