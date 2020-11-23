@@ -4,7 +4,7 @@ import SectionButton from "./SectionButton";
 import SectionHeader from "./SectionHeader";
 import { useAuth } from "./../util/auth.js";
 import { useForm } from "react-hook-form";
-import { getResponses } from "./../util/sheets.js";
+import { getResponses, filterNumbers } from "./../util/sheets.js";
 import { redirectToCheckout } from "./../util/stripe.js";
 
 function DashboardSms(props) {
@@ -42,47 +42,19 @@ function DashboardSms(props) {
   const { register, handleSubmit, errors, reset } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    // Show pending indicator
     setPending(true);
 
-    // Check Stripe account for if paid
-    // If paid generate charge and ask if successful
-    // Then check format of message data
-    // Then send message
-    // Then ask if successful
-    auth
-      .updatePassword(data.pass)
-      .then(() => {
-        // Clear form
-        reset();
-        // Set success status
-        props.onStatus({
-          type: "success",
-          message: "Your password has been updated",
-        });
-      })
-      // Maybe also catch error for needing a subscription?
-      .catch((error) => {
-        if (error.code === "auth/requires-recent-login") {
-          // Update state to show re-authentication modal
-          props.onStatus({
-            type: "requires-recent-login",
-            // Resubmit after reauth flow
-            callback: () => onSubmit({ pass: data.pass }),
-          });
-        } else {
-          // Set error status
-          props.onStatus({
-            type: "error",
-            message: error.message,
-          });
-        }
-      })
-      .finally(() => {
-        // Hide pending indicator
-        setPending(false);
-      });
+    const message = data.message;
+    const numbers = filterNumbers(data, customers, phoneCol);
+
+    // Stripe checkout
+    // Use webhook for some flag to see if was successful
+    
+    // Call request
+    // Check that it was successful
+
+    // Reset filters and what not
+    setPending(false);
   };
 
   return (
@@ -92,8 +64,8 @@ function DashboardSms(props) {
               <h3 className="is-primary">{q}</h3>
               {values.options.map((a) => (
                   <FormField
-                      key={q+"|||"+a}
-                      name={a}
+                      id={a}
+                      name={q+"|||"+a}
                       type="checkbox"
                       inputRef={register()}
                       error={errors.q}

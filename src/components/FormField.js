@@ -29,7 +29,7 @@ function FormField(props) {
             name={name}
             {...inputProps}
           />
-          {"  " + name}
+          {"  " + inputProps.id}
           </label>
         )}
         {type !== "textarea" && type !== "checkbox" && (

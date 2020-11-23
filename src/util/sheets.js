@@ -1,12 +1,35 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 
-function formatResponses(questions, responses) {
+export function filterNumbers(data, customers, phoneCol) {
+    let numbers = [];
+    // Asks if customer has all filters
+    Object.keys(data).forEach((d) => {
+        const [q, value] = d.split('|||');
+        if (data[d] && d !== "message") {
+            const flag = false;
+            for(let i=0; i<customers[q].responses.length; i++) {
+                if (customers[q].responses[i] === value) {
+                    numbers.push(customers[phoneCol].options[i]);
+                } else if (customers[q].responses[i].indexOf(value) >= 0) {
+                    numbers.push(customers[phoneCol].options[i]);
+                }
+                // Uncomment to remove number of customer if value is not included in filter
+                // else if (numbers.indexOf(customers[phoneCol].options[i]) >= 0) {
+                //     numbers.remote(customers[phoneCol].options[i]);
+                // }
+            }
+        }
+    });
+    numbers = [...new Set(numbers)];
+    return numbers;
+}
+
+export function formatResponses(questions, responses) {
     let obj = {};
     for (let i = 0; i < questions.length; i++) {
         let q = questions[i];
         let all = [];
         let a = responses.map((r) => {
-            console.log(r[i]);
             if (r[i] && r[i].trim()) {
                 all.push(...r[i].split(','));
             }
