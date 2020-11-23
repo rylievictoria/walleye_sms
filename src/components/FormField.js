@@ -1,11 +1,11 @@
 import React from "react";
 
 function FormField(props) {
-  const { error, type, inputRef, ...inputProps } = props;
+  const { error, type, name, label, inputRef, ...inputProps } = props;
 
   return (
     <div className="field">
-      {props.label && (
+      {type !== "checkbox" && props.label && (
         <label className="label" htmlFor={props.id}>
           {props.label}
         </label>
@@ -16,15 +16,28 @@ function FormField(props) {
           <textarea
             className="textarea is-medium"
             ref={inputRef}
+            name={name}
             {...inputProps}
           />
         )}
-
-        {type !== "textarea" && (
+        {type === "checkbox" && (
+          <label className="checkbox">
+          <input
+            type="checkbox mr-2"
+            ref={inputRef}
+            type={type}
+            name={name}
+            {...inputProps}
+          />
+          {"  " + name}
+          </label>
+        )}
+        {type !== "textarea" && type !== "checkbox" && (
           <input
             className="input is-medium"
             ref={inputRef}
             type={type}
+            name={name}
             {...inputProps}
           />
         )}

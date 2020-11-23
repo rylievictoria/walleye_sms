@@ -1,35 +1,48 @@
-import React, { useState } from "react";
-import CheckField from "./CheckField";
+import React, { useState, useEffect } from "react";
 import FormField from "./FormField";
 import SectionButton from "./SectionButton";
+import SectionHeader from "./SectionHeader";
 import { useAuth } from "./../util/auth.js";
 import { useForm } from "react-hook-form";
+import { getResponses } from "./../util/sheets.js";
+import { redirectToCheckout } from "./../util/stripe.js";
 
 function DashboardSms(props) {
   const auth = useAuth();
   const [pending, setPending] = useState(false);
-  let customers = [
-    ["Name", "Number", "Pizza Topping", "Favorite Color"],
-    ["Rylie", 2624243872, ["Pepperoni"], ["Blue", "Red"]],
-    ["Jordan", 6309010523, ["Pepperoni", "Sausage"], ["Blue"]],
-  ];
-  let questions = customers[0];
-  let numbers = [2624243872, 6309010523];
+  const [phoneCol, setPhoneCol] = useState("Number");
+  const [customers, setCustomers] = useState({
+    "Name": {responses: ["Rylie", "Jordan"], options: ["Rylie", "Jordan"]},
+    "Number": {responses: [2624243872, 6309010523], options: [2624243872, 6309010523]},
+    "Pizza Topping": {responses: ["Pepperoni", ["Cheese", "Sausage"]], options: ["Pepperoni", "Cheese", "Sausage"]},
+    "Favorite Color": {responses: [["Red", "Blue"], "Green"], options: ["Red", "Blue", "Green"]}
+  });
+  const [formAlert, setFormAlert] = useState(null);
 
-  if (auth.user.stripeSubscriptionId) {
-    // Load questions and answers from DB api
-    customers = [
-      ["Name", "Number", "Pizza Topping", "Favorite Color"],
-      ["Rylie", 2624243872, ["Pepperoni"], ["Yellow"]],
-    ];
-    questions = customers[0]; // Create db function to get questions and not include phone
-    numbers = [2624243872]; // Create db function to get phone numbers by filters
-  }
+  useEffect(() => {
+      if (auth.user.planIsActive && auth.user.sheetLink && auth.user.phoneCol) {
+        setPending(true);
+        getResponses(auth.user.sheetLink)
+        .then((c) => {
+          setCustomers(c);
+          setPhoneCol(auth.user.phoneCol);
+        })
+        .catch((e) => {
+          console.error('Error: ', e);
+        });
+        setPending(false);
+      }
+      else {
+        // Alert that no subscription and should sign up
+        // Redirect to checkout?
+        console.log(auth.user);
+      }
+    }, [auth.user]);
 
-  const { register, handleSubmit, errors, reset, getValues } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
 
   const onSubmit = (data) => {
-    alert(data);
+    console.log(data);
     // Show pending indicator
     setPending(true);
 
@@ -74,19 +87,22 @@ function DashboardSms(props) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {questions.map((question) => (
-        <CheckField
-          id={1}
-          name={question}
-          label={question + " Answers"}
-          error={errors.question}
-          inputRef={register({
-            required: "Please select one or all.",
-          })}
-          options={[1, 2, 3]}
-        />
-      ))}
-
+      {!pending && Object.entries(customers).map(([q, values]) => (
+          <div>
+              <h3 className="is-primary">{q}</h3>
+              {values.options.map((a) => (
+                  <FormField
+                      key={q+"|||"+a}
+                      name={a}
+                      type="checkbox"
+                      inputRef={register()}
+                      error={errors.q}
+                  />)
+              )}
+              <br />
+          </div>
+        )
+      )}
       <FormField
         name="message"
         type="textarea"

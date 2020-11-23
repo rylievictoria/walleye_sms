@@ -17,7 +17,7 @@ export default requireAuth(async (req, res) => {
   }
 
   try {
-    let { email, stripeCustomerId } = await getUser(user.uid);
+    let { email, stripeCustomerId, stripeSubscriptionId } = await getUser(user.uid);
 
     // If user does not already have a stripeCustomerId then create a customer in Stripe
     if (!stripeCustomerId) {

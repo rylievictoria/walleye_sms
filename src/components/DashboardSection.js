@@ -100,11 +100,11 @@ function DashboardSection(props) {
           />
         )}
 
-        {section == "home" && (
+        {section === "home" && (
           <DashboardHome parentColor={props.color} onStatus={handleStatus} />
         )}
 
-        {section == "send-a-text" && (
+        {section === "send-a-text" && (
           <DashboardSms parentColor={props.color} onStatus={handleStatus} />
         )}
       </div>

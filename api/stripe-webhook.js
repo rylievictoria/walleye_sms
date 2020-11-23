@@ -5,8 +5,11 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
   apiVersion: process.env.STRIPE_API_VERSION,
 });
 
+console.log('im working!');
+
 export default async (req, res) => {
   const headers = req.headers;
+  console.log('hellloooo');
 
   try {
     const rawBody = await getRawBody(req);
@@ -21,13 +24,16 @@ export default async (req, res) => {
 
     // Get the object from stripeEvent
     const object = stripeEvent.data.object;
-
+    console.log('im in');
+    console.log(object);
     switch (stripeEvent.type) {
       case "checkout.session.completed":
         // Fetch subscription
         const subscription = await stripe.subscriptions.retrieve(
           object.subscription
         );
+
+        console.log(subscription);
 
         // Update the current user
         await updateUserByCustomerId(object.customer, {

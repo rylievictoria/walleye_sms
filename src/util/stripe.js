@@ -22,6 +22,8 @@ export async function redirectToCheckout(planId) {
   window.history.replaceState({}, "", "/pricing");
 
   // Redirect to checkout
+  console.log(session);
+
   return stripe.redirectToCheckout({
     sessionId: session.id,
   });
