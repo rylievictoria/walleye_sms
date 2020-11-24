@@ -54,7 +54,7 @@ function DashboardSms(props) {
 
     const message = data.message;
     const numbers = filterNumbers(data, customers, phoneCol);
-    const cost = numbers.length * 0.10;
+    const cost = numbers.length * 0.06;
   
     if (!(auth.user.smsFunds > 0) || cost > auth.user.smsFunds) {
       if (auth.user.planIsActive) {
@@ -85,7 +85,7 @@ function DashboardSms(props) {
             delivery = [delivery];
           }
           auth.updateProfile({
-            smsFunds: auth.user.smsFunds - 0.10,
+            smsFunds: auth.user.smsFunds - 0.06,
             deliveries: delivery
           });
       })
