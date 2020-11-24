@@ -31,7 +31,7 @@ function PricingSection(props) {
                 "Low commitment",
                 "$225 billed quarterly",
                 "Begin to build a marketing platform",
-                "10¢ per text"
+                "6¢ per text"
               ],
             },
             {
@@ -42,7 +42,7 @@ function PricingSection(props) {
                 "First-priority customer service",
                 "$600 billed annually",
                 "Launch successful campaigns with an established audience",
-                "10¢ per text",
+                "6¢ per text",
               ],
             },
           ]}
