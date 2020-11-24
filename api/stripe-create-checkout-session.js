@@ -32,6 +32,8 @@ export default requireAuth(async (req, res) => {
 
     // Create a checkout session
     let params = {}
+    console.log(body);
+    console.log(body.quantity);
     if (body.priceId !== process.env.STRIPE_PRICE_SMS) {
       params = {
         customer: stripeCustomerId,

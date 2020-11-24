@@ -25,7 +25,7 @@ function App(props) {
           <Navbar
             color="primary"
             spaced={true}
-            logo="walleye.png"
+            logo={`${process.env.PUBLIC_URL}/walleye.png`}
           />
 
           <Switch>
@@ -63,7 +63,7 @@ function App(props) {
             backgroundImageOpacity={1}
             description="We make SMS marketing easy and accessible"
             copyright="© 2020 Leading Point Marketing, L.L.C."
-            logo="walleye_black.png"
+            logo={`${process.env.PUBLIC_URL}/walleye_black.png`}
           />
         </>
       </Router>

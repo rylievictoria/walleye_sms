@@ -8,7 +8,8 @@ export default function DashboardDeliveries(props) {
     let data = [];
     let columns = [];
     let count = 0;
-    auth.user.deliveries.forEach((d) => {
+    if (auth.user.planIsActive) {
+      auth.user.deliveries.forEach((d) => {
         data.push(d);
         if (count === 0) {
             Object.entries(d).map(([k, v]) => {
@@ -19,7 +20,11 @@ export default function DashboardDeliveries(props) {
             });
         }
         count++;
-    })
+      });
+    } else {
+      data = [{to: '+12624243872', dateSent: '2020-09-18', message: 'Hey there!'}, {to: '+14145888213', dateSent: '2020-09-18', message: 'Hey there!'}];
+      columns = [{Header: 'To', accessor: 'to'}, {Header: 'Date Sent', accessor: 'dateSent'}, {Header: 'Message', accessor: 'message'}];
+    }
 
     data = React.useMemo(
         () => data,
