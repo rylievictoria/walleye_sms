@@ -25,7 +25,7 @@ function App(props) {
           <Navbar
             color="primary"
             spaced={true}
-            logo="https://uploads.divjoy.com/logo-white.svg"
+            logo="walleye.png"
           />
 
           <Switch>
@@ -61,9 +61,9 @@ function App(props) {
             size="medium"
             backgroundImage=""
             backgroundImageOpacity={1}
-            description="A short description of what you do here"
-            copyright="© 2019 Company"
-            logo="https://uploads.divjoy.com/logo.svg"
+            description="We make SMS marketing easy and accessible"
+            copyright="© 2020 Leading Point Marketing, L.L.C."
+            logo="walleye_black.png"
           />
         </>
       </Router>

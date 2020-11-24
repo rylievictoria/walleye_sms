@@ -60,7 +60,7 @@ function Footer(props) {
                     <li>
                       <Link to="/contact">Contact</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         target="_blank"
                         href="https://medium.com"
@@ -68,7 +68,7 @@ function Footer(props) {
                       >
                         Blog
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -78,7 +78,7 @@ function Footer(props) {
                   <ul className="menu-list">
                     <li>
                       <a
-                        href="https://facebook.com"
+                        href="https://www.facebook.com/Leading-Point-Marketing-1649410601997222"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -89,7 +89,7 @@ function Footer(props) {
                         Facebook
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         href="https://instagram.com"
                         target="_blank"
@@ -101,8 +101,8 @@ function Footer(props) {
                         />
                         Instagram
                       </a>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <a
                         href="https://twitter.com"
                         target="_blank"
@@ -114,7 +114,7 @@ function Footer(props) {
                         />
                         Twitter
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>

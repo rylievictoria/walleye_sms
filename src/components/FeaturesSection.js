@@ -26,30 +26,30 @@ function FeaturesSection(props) {
             imageRatio="4by3"
             items={[
               {
-                title: "Lorem Ipsum",
+                title: "Custom Forms",
                 body:
-                  "Integer ornare neque mauris, ac vulputate lacus venenatis et. Pellentesque ut ultrices purus.",
-                image: "https://uploads.divjoy.com/undraw-fish_bowl_uu88.svg",
+                  "We work with you to create a page that you and your customers will love.",
+                image: "forms.svg",
               },
               {
-                title: "Lorem Ipsum",
+                title: "Data Storage",
                 body:
-                  "Nunc nulla mauris, laoreet vel cursus lacinia, consectetur sit amet tellus.",
-                image: "https://uploads.divjoy.com/undraw-directions_x53j.svg",
+                  "Forget the paper sheets - we'll store your information for you so you never have to worry about access or security.",
+                image: "following.svg",
               },
               {
-                title: "Lorem Ipsum",
+                title: "Simple Interface",
                 body:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lobortis, metus et mattis ullamcorper",
+                  "Texting shouldn't be complicated. We're here to make powerful tools easy for you to learn and use.",
                 image:
-                  "https://uploads.divjoy.com/undraw-stability_ball_b4ia.svg",
+                  "mobile.svg",
               },
               {
-                title: "Lorem Ipsum",
+                title: "Efficient Organization",
                 body:
-                  "Suspendisse ut tincidunt eros. In velit mi, rhoncus dictum neque a, tincidunt lobortis justo",
+                  "Don't send shot specials to the wrong people... select who to message by their responses to your form.",
                 image:
-                  "https://uploads.divjoy.com/undraw-personal_settings_kihd.svg",
+                  "organization.svg",
               },
             ]}
           />

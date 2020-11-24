@@ -15,8 +15,8 @@ function AboutPage(props) {
         size="large"
         backgroundImage=""
         backgroundImageOpacity={1}
-        title="We help you make money"
-        subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo, corporis totam!"
+        title="We help you get in touch"
+        subtitle="Send shot specials, discounts, event invites, and other important notifications with just a few clicks and concierge customer service."
       />
       <StatsSection
         color="light"
@@ -25,20 +25,16 @@ function AboutPage(props) {
         backgroundImageOpacity={1}
         items={[
           {
-            title: "Tweets",
-            stat: "3,456",
+            title: "Messages",
+            stat: "15k",
           },
           {
-            title: "Following",
-            stat: "123",
+            title: "Clients",
+            stat: "241",
           },
           {
-            title: "Followers",
-            stat: "456k",
-          },
-          {
-            title: "Likes",
-            stat: "789",
+            title: "Years",
+            stat: "15",
           },
         ]}
       />
@@ -55,8 +51,8 @@ function AboutPage(props) {
         size="medium"
         backgroundImage=""
         backgroundImageOpacity={1}
-        title="Ready to get started?"
-        buttonText="Get Started"
+        title="Make the leap!"
+        buttonText="Let's do this"
         buttonOnClick={() => {
           // Navigate to pricing page
           router.push("/pricing");

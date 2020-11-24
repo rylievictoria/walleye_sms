@@ -134,12 +134,6 @@ function DashboardSection(props) {
             maxWidth: "460px",
           }}
         >
-          <small>
-            Some helpful debug info
-            <span className="ml-1" role="img" aria-label="bug">
-              🐛
-            </span>
-          </small>
           <nav className="panel mt-3">
             <div className="panel-block is-block">
               Logged in as&nbsp;<strong>{auth.user.email}</strong>

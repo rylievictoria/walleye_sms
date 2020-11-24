@@ -9,7 +9,7 @@ function PricingPage(props) {
       backgroundImage=""
       backgroundImageOpacity={1}
       title="Pricing"
-      subtitle="Choose the plan that makes sense for you. All plans include a 14-day free trial."
+      subtitle="Choose the plan that makes sense for you"
     />
   );
 }

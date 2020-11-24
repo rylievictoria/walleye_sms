@@ -17,9 +17,9 @@ function IndexPage(props) {
         size="large"
         backgroundImage=""
         backgroundImageOpacity={1}
-        title="Your landing page title here"
-        subtitle="This landing page is perfect for showing off your awesome product and driving people to sign up for a paid plan."
-        buttonText="Start Free Trial"
+        title="Walleye SMS"
+        subtitle="Easy text marketing for your local business."
+        buttonText="Start Today"
         buttonOnClick={() => {
           // Navigate to pricing page
           router.push("/pricing");
@@ -31,7 +31,7 @@ function IndexPage(props) {
         backgroundImage=""
         backgroundImageOpacity={1}
         title="Features"
-        subtitle="All the features you need to move faster"
+        subtitle="Everything you need to spread the word"
       />
       <ClientsSection
         color="light"
@@ -55,13 +55,13 @@ function IndexPage(props) {
         backgroundImage=""
         backgroundImageOpacity={1}
         title="Ready to get started?"
-        buttonText="Get Started"
+        buttonText="Let's Go"
         buttonOnClick={() => {
           // Navigate to pricing page
           router.push("/pricing");
         }}
       />
-      <NewsletterSection
+      {/* <NewsletterSection
         color="light"
         size="medium"
         backgroundImage=""
@@ -71,7 +71,7 @@ function IndexPage(props) {
         buttonText="Subscribe"
         inputPlaceholder="Enter your email"
         subscribedMessage="You are now subscribed!"
-      />
+      /> */}
     </>
   );
 }

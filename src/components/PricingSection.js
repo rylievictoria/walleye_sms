@@ -21,28 +21,28 @@ function PricingSection(props) {
           className="has-text-centered"
         />
         <Pricing
-          buttonText="Choose"
+          buttonText="Select"
           items={[
             {
               id: "starter",
               name: "Starter",
-              price: "10",
+              price: "75",
               perks: [
-                "Lorem ipsum dolor sit amet",
-                "Consectetur adipiscing elit",
-                "Integer molestie lorem at massa",
+                "Low commitment",
+                "$225 billed quarterly",
+                "Begin to build a marketing platform",
+                "10¢ per text"
               ],
             },
             {
               id: "pro",
               name: "Pro",
-              price: "20",
+              price: "50",
               perks: [
-                "Lorem ipsum dolor sit amet",
-                "Consectetur adipiscing elit",
-                "Integer molestie lorem at massa",
-                "Faucibus porta lacus fringilla vel",
-                "Aenean sit amet erat nunc",
+                "First-priority customer service",
+                "$600 billed annually",
+                "Launch successful campaigns with an established audience",
+                "10¢ per text",
               ],
             },
           ]}
