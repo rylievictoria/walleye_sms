@@ -66,7 +66,7 @@ export default requireAuth(async (req, res) => {
         line_items: [
           {
             price: body.priceId,
-            quantity: Math.max(body.quantity, 5),  // Pricing @ $0.10 cents needs to be >= $.50
+            quantity: Math.max(body.quantity, 9),  // Pricing @ $0.06 cents needs to be >= $.50
           },
         ],
         mode: "payment",
