@@ -12,7 +12,7 @@ function AuthPage(props) {
       backgroundImage=""
       backgroundImageOpacity={1}
       type={router.query.type}
-      providers={["google", "facebook", "twitter"]}
+      providers={[]} // Fix social providers auth bug
       afterAuthPath={router.query.next || "/dashboard/:section"}
     />
   );
