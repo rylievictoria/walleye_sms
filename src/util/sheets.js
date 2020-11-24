@@ -6,16 +6,22 @@ export function filterNumbers(data, customers, phoneCol) {
     Object.keys(data).forEach((d) => {
         const [q, value] = d.split('|||');
         if (data[d] && d !== "message") {
-            for(let i=0; i<customers[q].responses.length; i++) {
-                if (customers[q].responses[i] === value) {
-                    numbers.push(customers[phoneCol].options[i]);
-                } else if (customers[q].responses[i].indexOf(value) >= 0) {
-                    numbers.push(customers[phoneCol].options[i]);
+            if(customers[q]) {
+                for(let i=0; i<customers[q].responses.length; i++) {
+                    if (customers[q].responses[i] === value) {
+                        numbers.push(customers[phoneCol].options[i]);
+                    } else if (customers[q].responses[i].indexOf(value) >= 0) {
+                        numbers.push(customers[phoneCol].options[i]);
+                    }
+                    // Uncomment to remove number of customer if value is not included in filter
+                    // else if (numbers.indexOf(customers[phoneCol].options[i]) >= 0) {
+                    //     numbers.remote(customers[phoneCol].options[i]);
+                    // }
                 }
-                // Uncomment to remove number of customer if value is not included in filter
-                // else if (numbers.indexOf(customers[phoneCol].options[i]) >= 0) {
-                //     numbers.remote(customers[phoneCol].options[i]);
-                // }
+            } else {
+                console.log(q);
+                console.log(customers);
+                alert(`Cannot use ${q} and ${customers}`);
             }
         }
     });
