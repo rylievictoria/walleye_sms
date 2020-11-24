@@ -21,7 +21,6 @@ function DashboardSms(props) {
   const [formAlert, setFormAlert] = useState(null);
 
   useEffect(() => {
-      console.log(auth.user);
       if (auth.user.planIsActive && !auth.user.sheetLink) {
         alert("You need to enter a sheet link first to not use default values!");
       } else if (auth.user.planIsActive && !auth.user.phoneCol) {

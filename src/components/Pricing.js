@@ -47,8 +47,8 @@ function Pricing(props) {
                 className="Pricing__button button is-medium is-primary"
                 to={
                   auth.user
-                    ? `/purchase/${item.id}?quantity=1`
-                    : `/auth/signup?next=/purchase/${item.id}?quantity=1`
+                    ? `/purchase/${item.id}`
+                    : `/auth/signup?next=/purchase/${item.id}`
                 }
               >
                 {props.buttonText}

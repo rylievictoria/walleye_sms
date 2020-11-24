@@ -4,11 +4,8 @@ const { getUser } = require("./_db.js");
 export default requireAuth(async (req, res) => {
     const body = req.body;
     const user = req.user;
-    console.log(body);
-    console.log(user);
 
     if (!body.to) {
-        console.log('bad body');
         return res.status(400).send({
           status: "error",
           message: "No receiving phone number is defined in request body",
@@ -16,7 +13,6 @@ export default requireAuth(async (req, res) => {
       }
 
       if (!body.message) {
-        console.log('bad message');
         return res.status(400).send({
           status: "error",
           message: "No message is defined in request body",
@@ -30,7 +26,6 @@ export default requireAuth(async (req, res) => {
         );
 
         let { stripeSubscriptionId } = await getUser(user.uid);
-        console.log(stripeSubscriptionId);
         
         // Uncomment when subscription id is fixed 
         // if(!stripeSubscriptionId) {
