@@ -8,10 +8,11 @@ export function filterNumbers(data, customers, phoneCol) {
         if (data[d] && d !== "message") {
             if(customers[q]) {
                 for(let i=0; i<customers[q].responses.length; i++) {
+                    let num = "+1" + String(customers[phoneCol].options[i]);
                     if (customers[q].responses[i] === value) {
-                        numbers.push(customers[phoneCol].options[i]);
+                        numbers.push(num);
                     } else if (customers[q].responses[i].indexOf(value) >= 0) {
-                        numbers.push(customers[phoneCol].options[i]);
+                        numbers.push(num);
                     }
                     // Uncomment to remove number of customer if value is not included in filter
                     // else if (numbers.indexOf(customers[phoneCol].options[i]) >= 0) {
