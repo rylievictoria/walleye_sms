@@ -14,7 +14,7 @@ function DashboardSms(props) {
   const [phoneCol, setPhoneCol] = useState("Number");
   const [customers, setCustomers] = useState({
     "Name": {responses: ["Rylie", "Jordan"], options: ["Rylie", "Jordan"]},
-    "Number": {responses: ["+12624243872", "+6309010523"], options: ["+2624243872", "+6309010523"]},
+    "Number": {responses: ["2624243872", "6309010523"], options: ["2624243872", "6309010523"]},
     "Pizza Topping": {responses: ["Pepperoni", ["Cheese", "Sausage"]], options: ["Pepperoni", "Cheese", "Sausage"]},
     "Favorite Color": {responses: [["Red", "Blue"], "Green"], options: ["Red", "Blue", "Green"]}
   });
